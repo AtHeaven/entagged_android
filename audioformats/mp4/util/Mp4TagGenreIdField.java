@@ -18,17 +18,18 @@
  */
 package entagged.audioformats.mp4.util;
 
-import java.io.UnsupportedEncodingException;
-
+import entagged.audioformats.Tag;
 import entagged.audioformats.generic.Utils;
 
-public class Mp4TagTextNumberField extends Mp4TagTextField {
+import java.io.UnsupportedEncodingException;
+
+public class Mp4TagGenreIdField extends Mp4TagTextField {
     
-    public Mp4TagTextNumberField(String id, String n) {
+    public Mp4TagGenreIdField(String id, String n) {
         super(id, n);
     }
-    
-    public Mp4TagTextNumberField(String id, byte[] raw) throws UnsupportedEncodingException {
+
+    public Mp4TagGenreIdField(String id, byte[] raw) throws UnsupportedEncodingException {
         super(id, raw);
     }
     
@@ -37,6 +38,7 @@ public class Mp4TagTextNumberField extends Mp4TagTextField {
     }
     
     protected void build(byte[] raw) throws UnsupportedEncodingException {
-        this.content = (raw.length >= 20 ? Utils.getNumberBigEndian(raw, 16, 19) : 0) + "";
+        int genreId = raw[raw.length - 1];
+        this.content = (genreId < Tag.DEFAULT_GENRES.length) ? Tag.DEFAULT_GENRES[genreId] : "";
     }
 }

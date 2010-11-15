@@ -40,7 +40,7 @@ public class Mp4TagReader {
      */
     public Mp4Tag read( RandomAccessFile raf ) throws CannotReadException, IOException {
         Mp4Tag tag = new Mp4Tag();
-        
+
         Mp4Box box = new Mp4Box();
         byte[] b = new byte[4];
         
@@ -53,7 +53,7 @@ public class Mp4TagReader {
         
         //3-Searching for "meta"
         seek(raf, box, "meta");
-        
+
         //4-skip the meta flags
         raf.read(b);
         if(b[0] != 0)
@@ -62,6 +62,7 @@ public class Mp4TagReader {
         //5-Seek the "ilst"
         seek(raf, box, "ilst");
         int length = box.getOffset() - 8;
+        tag.setMetaInfo(raf.getFilePointer(), length);
         
         int read = 0;
         while(read < length) {
@@ -97,7 +98,9 @@ public class Mp4TagReader {
         
         else if(id.equals("covr"))
             return new Mp4TagCoverField(raw);
-        
+        else if(id.equals("gnre"))
+            return new Mp4TagGenreIdField(id, raw);
+
         return new Mp4TagBinaryField(id, raw);
     }
     

@@ -350,6 +350,8 @@ public abstract class AbstractTag implements Tag {
 	 */
 	public String getFirstGenre() {
 		List l = get(getGenreId());
+        if (l.size() == 0)
+            l = get("gnre");
 		return (l.size() != 0) ? ((TagTextField) l.get(0)).getContent() : "";
 	}
 

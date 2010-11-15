@@ -33,6 +33,7 @@
 	<property name="library_jar" value="${library_dir}/entagged-audioformats-${library_version}.jar"/>
 	<property name="library_source_tar" value="${library_dir}/entagged-audioformats-source-${library_version}.tar"/>
 	<property name="library_source_targz" value="${library_source_tar}.gz"/>
+    <property name="library_source_zip" value="${library_dir}/entagged-sources.zip"/>
 	<property name="library_javadoc" value="${library_dir}/javadoc"/>
 	<property name="targz_exclude" value="**/*.class"/>
 
@@ -47,7 +48,7 @@
 	</target>
 	
 	<target name="compile" depends="prepare">
-		<javac srcdir="${library_dir}" classpath="${library_classpath}" source="1.4"/>
+		<javac srcdir="${library_dir}" classpath="${library_classpath}" source="1.6" debug="off"/>
 	</target>
 	
 	<target name="javadoc" depends="prepare">
@@ -84,9 +85,12 @@
 		
 	<target name="build" depends="compile,javadoc">
 		<jar destfile="${library_jar}" basedir="${entagged_dir}" includes="entagged/audioformats/**/*.class" index="true"/>
-		
+        <zip zipfile="${library_source_zip}" basedir="${entagged_dir}" includes="entagged/audioformats/**/*.java entagged/audioformats/build.xml entagged/audioformats/javadoc/**" />
+
+<!--
 		<tar tarfile="${library_source_tar}" basedir="${entagged_dir}" includes="entagged/audioformats/**/*.java entagged/audioformats/build.xml entagged/audioformats/javadoc/**" />
 		<gzip zipfile="${library_source_targz}" src="${library_source_tar}"/>
 		<delete file="${library_source_tar}" />
+-->
 	</target>
 </project>

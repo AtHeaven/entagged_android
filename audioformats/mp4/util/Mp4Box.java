@@ -20,6 +20,8 @@ package entagged.audioformats.mp4.util;
 
 import entagged.audioformats.generic.Utils;
 
+import java.io.UnsupportedEncodingException;
+
 public class Mp4Box {
     
     private String id;
@@ -27,8 +29,12 @@ public class Mp4Box {
         
     public void update(byte[] b) {
         this.offset = Utils.getNumberBigEndian(b, 0, 3);
-        
-        this.id = Utils.getString(b, 4, 4);
+
+        try {
+            this.id = Utils.getString(b, 4, 4, "ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            this.id = "";
+        }
     }
     
     public String getId() {

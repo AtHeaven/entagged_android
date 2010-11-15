@@ -23,6 +23,8 @@ import entagged.audioformats.exceptions.CannotWriteException;
 import entagged.audioformats.generic.*;
 import entagged.audioformats.mp3.Mp3FileReader;
 import entagged.audioformats.mp3.Mp3FileWriter;
+import entagged.audioformats.mp4.Mp4FileReader;
+import entagged.audioformats.mp4.Mp4FileWriter;
 import entagged.audioformats.ogg.OggFileReader;
 import entagged.audioformats.ogg.OggFileWriter;
 import entagged.audioformats.wav.WavFileReader;
@@ -201,11 +203,15 @@ public class AudioFileIO {
 		readers.put("mp3", new Mp3FileReader());
 		readers.put("ogg", new OggFileReader());
 		readers.put("wav", new WavFileReader());
+        readers.put("m4a", new Mp4FileReader());
+        readers.put("mp4", new Mp4FileReader());
 
 		// Tag Writers
 		writers.put("mp3", new Mp3FileWriter());
 		writers.put("ogg", new OggFileWriter());
 		writers.put("wav", new WavFileWriter());
+        writers.put("m4a", new Mp4FileWriter());
+        writers.put("mp4", new Mp4FileWriter());
 
 		// Register modificationHandler
 		Iterator it = writers.values().iterator();
