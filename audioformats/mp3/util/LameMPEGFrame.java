@@ -1,6 +1,6 @@
 /*
  * Entagged Audio Tag library
- * Copyright (c) 2003-2005 Raphaël Slinckx <raphael@slinckx.net>
+ * Copyright (c) 2003-2005 Raphael Slinckx <raphael@slinckx.net>
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,7 +22,7 @@ package entagged.audioformats.mp3.util;
 /**
  *  Creates a representation of a Lame Mpeg frame $Id: LameMPEGFrame.java,v 1.3 2005/05/19 16:00:15 kikidonk Exp $
  *
- * @author     Raphaï¿½l Slinckx (KiKiDonK)
+ * @author     Raphael Slinckx (KiKiDonK)
  * @version    v0.03
  */
 public class LameMPEGFrame {

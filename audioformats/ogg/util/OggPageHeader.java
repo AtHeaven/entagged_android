@@ -1,6 +1,6 @@
 /*
  * Entagged Audio Tag library
- * Copyright (c) 2003-2005 Raphaël Slinckx <raphael@slinckx.net>
+ * Copyright (c) 2003-2005 Raphael Slinckx <raphael@slinckx.net>
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,7 +24,7 @@ package entagged.audioformats.ogg.util;
  *  $Id: OggPageHeader.java,v 1.5 2005/05/19 16:00:04 kikidonk Exp $
  *
  * @author     Raphael Slinckx (KiKiDonK)
- * @version    16 décembre 2003
+ * @version    16 dï¿½cembre 2003
  */
 public class OggPageHeader {
 	private double absoluteGranulePosition;

@@ -1,6 +1,6 @@
 /*
  * Entagged Audio Tag library
- * Copyright (c) 2003-2005 Raphaël Slinckx <raphael@slinckx.net>
+ * Copyright (c) 2003-2005 Raphael Slinckx <raphael@slinckx.net>
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -23,7 +23,7 @@ package entagged.audioformats.mp3.util;
 /**
  *  Creates a representation of a Xing Mpeg frame $Id: XingMPEGFrame.java,v 1.6 2005/12/13 12:44:39 kikidonk Exp $
  *
- * @author     Raphaï¿½l Slinckx (KiKiDonK)
+ * @author     Raphael Slinckx (KiKiDonK)
  * @version    v0.03
  */
 public class XingMPEGFrame implements VbrInfoFrame {
