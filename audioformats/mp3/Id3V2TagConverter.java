@@ -174,12 +174,12 @@ public final class Id3V2TagConverter {
 			result = tag;
 		} else {
 			if (tag.getRepresentedVersion() < Id3v2Tag.ID3V23) {
-				result = convert22to23(tag);
+				result = convert(convert22to23(tag), targetVersion);
 			}
-			if (tag.getRepresentedVersion() < Id3v2Tag.ID3V24
+			else if (tag.getRepresentedVersion() < Id3v2Tag.ID3V24
 					&& targetVersion <= Id3v2Tag.ID3V24) {
 				// convert from Id3v2.3 to Id3v2.4
-				result = convert23to24(result);
+				result = convert23to24(tag);
 			}
 		}
 		assert result != null;
@@ -238,9 +238,11 @@ public final class Id3V2TagConverter {
 		 * Now convert some Special Fields.
 		 */
 		// TDAT, TIME and TYEAR -> to -> TDRC
-		TimeId3Frame tdrc = createTimeField((TextId3Frame) specialStore
-				.get(DATE), (TextId3Frame) specialStore.get(TIME),
-				(TextId3Frame) specialStore.get(YEAR));
+		TimeId3Frame tdrc = createTimeField(
+                (TextId3Frame) specialStore.get(DATE)
+                , (TextId3Frame) specialStore.get(TIME)
+                , (TextId3Frame) specialStore.get(YEAR)
+        );
 		source.set(tdrc);
 		source.setRepresentedVersion(Id3v2Tag.ID3V24);
 		return source;

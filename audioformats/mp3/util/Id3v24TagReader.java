@@ -168,7 +168,7 @@ public class Id3v24TagReader {
 		int tagSize = data.limit();
 		byte[] b;
 		// Create a result object
-		Id3v2Tag tag = new Id3v2Tag();
+		Id3v2Tag tag = new Id3v2Tag(version);
 		// ---------------------------------------------------------------------
 		// If the flags indicate an extended header to be present, read its
 		// size and skip it. (It does not contain any useful information, maybe

@@ -18,12 +18,14 @@
  */
 package entagged.audioformats.mp3;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
 import entagged.audioformats.generic.AbstractTag;
 import entagged.audioformats.generic.TagField;
 import entagged.audioformats.mp3.util.id3frames.CommId3Frame;
+import entagged.audioformats.mp3.util.id3frames.Id3Frame;
 import entagged.audioformats.mp3.util.id3frames.TextId3Frame;
 
 /**
@@ -310,5 +312,10 @@ public class Id3v2Tag extends AbstractTag {
 	 */
 	protected void setRepresentedVersion(byte representedVersion) {
 		this.representedVersion = representedVersion;
-	}
+        Iterator fieldsIt = getFields();
+        while (fieldsIt.hasNext()) {
+            Id3Frame current = (Id3Frame) fieldsIt.next();
+            current.updateVersion(representedVersion);
+        }
+    }
 }

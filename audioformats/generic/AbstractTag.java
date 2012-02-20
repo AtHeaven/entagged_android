@@ -288,13 +288,15 @@ public abstract class AbstractTag implements Tag {
 			private void changeIt() {
 				if (!it.hasNext())
 					return;
-
-				List l = (List) ((Map.Entry) it.next()).getValue();
-				fieldsIt = l.iterator();
+                // handle the case when the newly selected iterator is also empty
+                do {
+                    List l = (List) ((Map.Entry) it.next()).getValue();
+                    fieldsIt = l.iterator();
+                } while (!fieldsIt.hasNext() && it.hasNext());
 			}
 
 			public boolean hasNext() {
-				if (fieldsIt == null) {
+				if (fieldsIt == null || !fieldsIt.hasNext()) {
 					changeIt();
 				}
 				return it.hasNext() || (fieldsIt != null && fieldsIt.hasNext());

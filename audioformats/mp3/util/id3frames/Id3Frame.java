@@ -226,4 +226,9 @@ public abstract class Id3Frame implements TagField {
 
 	protected abstract void populate(byte[] raw)
 			throws UnsupportedEncodingException;
+
+    public void updateVersion(byte version) {
+        this.version = version;
+        //populate(build()); // not sure about this
+    }
 }
